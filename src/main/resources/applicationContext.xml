@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--开启自动扫描：https://www.cnblogs.com/xiao-tao/p/6225133.html-->
+    <context:annotation-config/>
+    <context:component-scan base-package="cn.edu.zua.damon"/>
+
+    <!--配置文件读取-->
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--数据源配置-->
+    <!--可用的dbcp数据源-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <!--数据源连接数量-->
+        <property name="initialSize" value="1"/>
+        <property name="maxTotal" value="50"/>
+        <property name="minIdle" value="2"/>
+        <property name="maxIdle" value="10"/>
+        <property name="maxWaitMillis" value="60000"/>
+        <!--连接健康情况维护和检查-->
+        <property name="validationQuery" value="select 1"/>
+        <property name="validationQueryTimeout" value="30"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="true"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="timeBetweenEvictionRunsMillis" value="300000"/>
+        <property name="minEvictableIdleTimeMillis" value="600000"/>
+        <!--缓存语句-->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="-1"/>
+    </bean>
+
+    <!-- ========================================分隔线========================================= -->
+    <!-- ========================================针对myBatis的配置项 替换conf.xml============================== -->
+    <!-- 配置sqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描me/gacl/mapping/目录下的所有SQL映射的xml文件, 省掉Configuration.xml里的手工配置
+            value="classpath:me/gacl/mapping/*.xml"指的是classpath(类路径)下me.gacl.mapping包中的所有xml文件
+            UserMapper.xml位于me.gacl.mapping包下，这样UserMapper.xml就可以被自动扫描
+             -->
+        <property name="mapperLocations" value="classpath:cn/edu/zua/damon/dao/mapper/xml/*.xml"/>
+        <!--<property name="typeAliasesPackage" value="com.zzia.model"/>-->
+    </bean>
+    <!--配置扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 扫描me.gacl.dao这个包以及它的子包下的所有映射接口类 -->
+        <property name="basePackage" value="cn.edu.zua.damon.dao.mapper"/>
+        <!--这就是它如何来配置的,注意 bean 的名称是必须的,而不是 bean 的引用,因 此,value 属性在这里替代通常的 ref http://www.mybatis.org/spring/zh/mappers.html#MapperScannerConfigurer-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <!--SqlSessionTemplate,这个不是必须的，但是可以在代码中使用SqlSession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+    <!-- ========================================分隔线 事务管理========================================= -->
+
+    <!--配置spring的事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 拦截器方式配置事物 -->
+    <tx:advice id="transactionInterceptor" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="append*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="modify*" propagation="REQUIRED"/>
+            <tx:method name="edit*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="remove*" propagation="REQUIRED"/>
+            <tx:method name="repair" propagation="REQUIRED"/>
+            <tx:method name="delAndRepair" propagation="REQUIRED"/>
+
+            <tx:method name="get*" propagation="SUPPORTS"/>
+            <tx:method name="list*" propagation="SUPPORTS"/>
+            <tx:method name="count*" propagation="SUPPORTS"/>
+            <tx:method name="find*" propagation="SUPPORTS"/>
+            <tx:method name="load*" propagation="SUPPORTS"/>
+            <tx:method name="search*" propagation="SUPPORTS"/>
+            <tx:method name="datagrid*" propagation="SUPPORTS"/>
+
+            <tx:method name="*" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="transactionPointcut" expression="execution(* cn.edu.zua.damon.service..*Impl.*(..))"/>
+        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionInterceptor"/>
+    </aop:config>
+
+    <!--spring对普通类的代理功能-->
+    <aop:aspectj-autoproxy/>
+</beans>
