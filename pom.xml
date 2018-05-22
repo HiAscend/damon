@@ -183,6 +183,17 @@
         <finalName>damon</finalName>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <testResources>
             <testResource>
                 <directory>${basedir}/src/test/resources</directory>
@@ -205,12 +216,23 @@
                             <resource>
                                 <directory>${basedir}/src/main/resources</directory>
                             </resource>
+                            <!--mybatis的xml文件-->
+                            <resource>
+                                <directory>${basedir}/src/main/java</directory>
+                                <includes>
+                                    <include>**/*.xml</include>
+                                </includes>
+                            </resource>
                         </resources>
                     </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.7.0</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <compilerVersion>1.8</compilerVersion>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>

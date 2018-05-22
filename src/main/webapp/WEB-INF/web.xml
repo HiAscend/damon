@@ -12,17 +12,73 @@
     <!--3. description?-->
     <!--4. distributable?-->
     <!--5. context-param*-->
-
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
     <!--6. filter*-->
-
+    <filter>
+        <!--字符编码-->
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <!--<init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>-->
+    </filter>
     <!--7. filter-mapping*-->
-
+    <filter-mapping>
+        <!--字符编码-->
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern><!--拦截所有-->
+    </filter-mapping>
     <!--8. listener*-->
-
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
     <!--9. servlet*-->
+    <servlet>
+        <!--SpringMVC 默认会加载<servlet-Name>-servlet.xml
+            但是若通过<init-param>配置参数：
+            1、namespace:若配置namespace为sample,则加载WEB-INF/sample.xml
+            2、publishContext:boolean 若为true，则表示吧WebApplicationContext发布到ServletContext的属性列表中
+                通过DispatcherServlet#getServletContextAttributeName()方法返回值
+            3、publishEvents:boolean 默认为true，表示当DispatcherServlet处理完一个请求后，是否需要想容器发布一个ServletRequestHandledEvent事件
+                若容器中没有任何事件监听器，则可以将该属性设置为false，以便提高运行性能-->
 
+        <servlet-name>chapter17</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--默认加载的文件是，chapter17-servlet.xml-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--什么都不写表示使用context-param中的配置-->
+            <param-value>classpath:/damon-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <!-- springMVC的异步支持 -->
+        <async-supported>true</async-supported>
+    </servlet>
     <!--10.servlet-mapping*-->
-
+    <!--<servlet-mapping>
+        <servlet-name>chapter17</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>chapter17</servlet-name>
+        <url-pattern>/a/</url-pattern>
+    </servlet-mapping>-->
+    <!--下面的配置需要对静态资源进行处理,使用rest风格编程-->
+    <servlet-mapping>
+        <servlet-name>chapter17</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     <!--11.session-config?-->
     <!--12.mime-mapping*-->
     <!--13.welcome-file-list?-->
@@ -30,6 +86,14 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <!--14.error-page*-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
     <!--15.taglib*-->
     <!--16.resource-env-ref*-->
     <!--17.resource-ref*-->
