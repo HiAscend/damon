@@ -37,11 +37,11 @@ public class Book implements Serializable {
      */
     private String subtitle;
     /**
-     * decimal(8,4)
+     * decimal(8,4) 单位：元
      */
     private BigDecimal originalPrice;
     /**
-     * decimal(8,4)
+     * decimal(8,4) 单位：元
      */
     private BigDecimal marketPrice;
     /**

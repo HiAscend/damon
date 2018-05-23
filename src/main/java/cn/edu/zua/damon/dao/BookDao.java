@@ -4,7 +4,6 @@ import cn.edu.zua.damon.entity.Book;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -46,5 +45,5 @@ public interface BookDao extends Serializable {
      * @param id BigInteger
      * @return Book
      */
-    Book getBookById(BigInteger id);
+    Book getBookById(Long id);
 }
