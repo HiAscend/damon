@@ -5,14 +5,14 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import java.io.Serializable;
 
 /**
- * User
+ * UserInfo
  *
  * @author ascend
  * @date 2018/5/28 11:03.
  */
-public class User implements Serializable {
-    private static final long serialVersionUID = -2363936751044479088L;
+public class UserInfo implements Serializable {
 
+    private static final long serialVersionUID = 2740544421155496415L;
     /**
      * 主键，自增
      */
@@ -26,12 +26,15 @@ public class User implements Serializable {
     /**
      * 加密后的密码
      */
-    private String password;
+    private String passWord;
 
     /**
      * 用户角色，系统管理员，普通管理员
      */
     private String roleName;
+
+    public UserInfo() {
+    }
 
     public Long getId() {
         return id;
@@ -49,12 +52,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getRoleName() {

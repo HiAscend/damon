@@ -13,9 +13,6 @@ import java.math.BigDecimal;
 public class Book implements Serializable {
     private static final long serialVersionUID = 2890919381220722182L;
 
-    public Book() {
-    }
-
     /**
      * 主键
      */
@@ -80,6 +77,9 @@ public class Book implements Serializable {
      * 书籍的热度
      */
     private Integer hot;
+
+    public Book() {
+    }
 
     public Long getId() {
         return id;

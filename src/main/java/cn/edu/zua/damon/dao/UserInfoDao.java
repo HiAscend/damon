@@ -1,6 +1,6 @@
 package cn.edu.zua.damon.dao;
 
-import cn.edu.zua.damon.entity.User;
+import cn.edu.zua.damon.entity.UserInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,14 +13,14 @@ import java.util.Map;
  * @date 2018/5/28 11:02.
  */
 @Repository
-public interface UserDao {
+public interface UserInfoDao {
     /**
      * 登录
      *
-     * @param user User
-     * @return User
+     * @param userInfo UserInfo
+     * @return UserInfo
      */
-    User login(User user);
+    UserInfo login(UserInfo userInfo);
 
     /**
      * 查找用户列表
@@ -28,7 +28,7 @@ public interface UserDao {
      * @param map Map
      * @return List
      */
-    List<User> findUsers(Map<String, Object> map);
+    List<UserInfo> findUserInfos(Map<String, Object> map);
 
     /**
      * 查询用户总数
@@ -36,23 +36,23 @@ public interface UserDao {
      * @param map Map
      * @return Long
      */
-    Long getTotalUser(Map<String, Object> map);
+    Long getTotalUserInfo(Map<String, Object> map);
 
     /**
      * 修改用户
      *
-     * @param user User
+     * @param userInfo UserInfo
      * @return int 受影响的行
      */
-    int updateUser(User user);
+    int updateUserInfo(UserInfo userInfo);
 
     /**
      * 添加用户
      *
-     * @param user User
+     * @param userInfo UserInfo
      * @return 受影响的行
      */
-    int addUser(User user);
+    int addUserInfo(UserInfo userInfo);
 
     /**
      * 删除用户
@@ -60,5 +60,5 @@ public interface UserDao {
      * @param id Long
      * @return 受影响的行
      */
-    int deleteUser(Long id);
+    int deleteUserInfo(Long id);
 }

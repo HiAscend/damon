@@ -14,9 +14,6 @@ import java.math.BigInteger;
 public class Article implements Serializable {
     private static final long serialVersionUID = 8680804983633158833L;
 
-    public Article() {
-    }
-
     /**
      * 主键
      */
@@ -41,6 +38,9 @@ public class Article implements Serializable {
      * 添加人
      */
     private String addName;
+
+    public Article() {
+    }
 
     public BigInteger getId() {
         return id;
