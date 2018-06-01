@@ -1,6 +1,9 @@
 package cn.edu.zua.damon.entity;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Picture
@@ -38,7 +41,13 @@ public class Picture implements Serializable {
     /**
      * 创建时间
      */
-    private String createTime;
+    private Date gmtCreate;
+
+    /**
+     * 记录修改时间
+     */
+    private Date gmtModified;
+
 
     public Picture() {
     }
@@ -83,11 +92,24 @@ public class Picture implements Serializable {
         this.grade = grade;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public Date getGmtCreate() {
+        return gmtCreate;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    public Date getGmtModified() {
+        return gmtModified;
+    }
+
+    public void setGmtModified(Date gmtModified) {
+        this.gmtModified = gmtModified;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }
