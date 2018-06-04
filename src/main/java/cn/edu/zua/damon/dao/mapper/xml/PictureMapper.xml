@@ -14,7 +14,7 @@
     </resultMap>
 
     <!--根据id查找-->
-    <select id="findPictureById" parameterType="String" resultMap="PictureResult">
+    <select id="findPictureById" parameterType="Long" resultMap="PictureResult">
         SELECT
             id,
             path,
