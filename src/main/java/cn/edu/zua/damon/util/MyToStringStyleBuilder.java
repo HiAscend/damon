@@ -16,13 +16,19 @@ import java.util.Map;
 public class MyToStringStyleBuilder {
     private static Map<String, String> filedNameMap = new HashMap<>();
 
+    public MyToStringStyleBuilder() {
+    }
+
     /**
      * 创建默认的ToStringStyle
+     * 日期输出：Date-->yyyy-MM-dd HH:mm:ss
      *
      * @return ToStringStyle
      */
     public static ToStringStyle build() {
         return new ToStringStyle() {
+            private static final long serialVersionUID = -6571916616666945972L;
+
             /**
              * <p>Append to the <code>toString</code> an <code>Object</code>
              * value, printing the full detail of the <code>Object</code>.</p>
@@ -35,10 +41,10 @@ public class MyToStringStyleBuilder {
             protected void appendDetail(StringBuffer buffer, String fieldName, Object value) {
                 if ("gmtCreate".equals(fieldName) || "gmtModified".equals(fieldName)) {
                     if (value instanceof Date) {
-                        buffer.append(DateFormatUtils.format((Date) value, "yyyy-MM-dd HH:mm:ss"));
+                        value = DateFormatUtils.format((Date) value, "yyyy-MM-dd HH:mm:ss");
                     }
                 }
-                super.appendDetail(buffer, fieldName, value);
+                buffer.append(value);
             }
         };
     }
