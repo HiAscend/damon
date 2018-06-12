@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
+import java.util.Map;
+
 /**
  * StudentDaoTest
  *
@@ -31,5 +33,11 @@ public class StudentDaoTest extends AbstractTestNGSpringContextTests {
     public void testFindStudentById() {
         StudentDO student = studentDao.getStudentById(2L);
         System.out.println("student = " + student);
+    }
+
+    @Test
+    public void testFindStudentById2() {
+        Map<String, Object> map = studentDao.getStudentById2(2L);
+        System.out.println("map = " + map);
     }
 }

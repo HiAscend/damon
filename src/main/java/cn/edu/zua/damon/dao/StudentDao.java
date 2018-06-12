@@ -3,6 +3,8 @@ package cn.edu.zua.damon.dao;
 import cn.edu.zua.damon.entity.domain.StudentDO;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 /**
  * StudentDao
  *
@@ -18,4 +20,12 @@ public interface StudentDao {
      * @return StudentDO
      */
     StudentDO getStudentById(Long id);
+
+    /**
+     * 根据id查找2
+     *
+     * @param id Long
+     * @return StudentDO
+     */
+    Map<String, Object> getStudentById2(Long id);
 }

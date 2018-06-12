@@ -29,4 +29,18 @@
         WHERE id = #{id}
     </select>
 
+    <!--根据id查找2-->
+    <select id="getStudentById2" parameterType="Long" resultType="map">
+        SELECT
+        id,
+        user_name,
+        age,
+        gmt_create,
+        gmt_modified,
+        t_date,
+        t_time,
+        t_datetime
+        FROM test_student
+        WHERE id = #{id}
+    </select>
 </mapper>
