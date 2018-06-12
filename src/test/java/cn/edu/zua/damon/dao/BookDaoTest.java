@@ -1,6 +1,6 @@
 package cn.edu.zua.damon.dao;
 
-import cn.edu.zua.damon.entity.Book;
+import cn.edu.zua.damon.entity.domain.BookDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -34,8 +34,8 @@ public class BookDaoTest extends AbstractTestNGSpringContextTests{
         parameterMap.put("author", "%新%");
         // parameterMap.put("title", "材料成型概论");
         // parameterMap.put("isbn", "9787302290728");
-        List<Book> bookList = bookDao.findBooks(parameterMap);
-        System.out.println("bookList = " + bookList);
+        List<BookDO> bookDOList = bookDao.listBooks(parameterMap);
+        System.out.println("bookDOList = " + bookDOList);
     }
 
     @Test
@@ -44,14 +44,14 @@ public class BookDaoTest extends AbstractTestNGSpringContextTests{
         parameterMap.put("author", "%新%");
         // parameterMap.put("title", "材料成型概论");
         // parameterMap.put("isbn", "9787302290728");
-        Long totalBooks = bookDao.getTotalBooks(parameterMap);
+        Long totalBooks = bookDao.countTotalBooks(parameterMap);
         System.out.println("totalBooks = " + totalBooks);
     }
 
     @Test
     public void testGetBookById() {
-        Book book = bookDao.getBookById(1L);
-        System.out.println("book = " + book);
+        BookDO bookDO = bookDao.getBookById(1L);
+        System.out.println("bookDO = " + bookDO);
     }
 
 }

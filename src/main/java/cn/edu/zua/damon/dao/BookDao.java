@@ -1,6 +1,6 @@
 package cn.edu.zua.damon.dao;
 
-import cn.edu.zua.damon.entity.Book;
+import cn.edu.zua.damon.entity.domain.BookDO;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
@@ -21,7 +21,7 @@ public interface BookDao extends Serializable {
      * @param map Map
      * @return List
      */
-    List<Book> findBooks(Map<String, Object> map);
+    List<BookDO> listBooks(Map<String, Object> map);
 
     /**
      * 书籍数目
@@ -29,21 +29,21 @@ public interface BookDao extends Serializable {
      * @param map Map
      * @return Long
      */
-    Long getTotalBooks(Map<String, Object> map);
+    Long countTotalBooks(Map<String, Object> map);
 
     /**
      * 添加书籍
      *
-     * @param book Book
+     * @param bookDO BookDO
      * @return int 受影响的行
      */
-    int insertBook(Book book);
+    int insertBook(BookDO bookDO);
 
     /**
      * 根据id查找书籍
      *
      * @param id BigInteger
-     * @return Book
+     * @return BookDO
      */
-    Book getBookById(Long id);
+    BookDO getBookById(Long id);
 }

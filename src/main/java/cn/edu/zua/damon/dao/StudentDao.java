@@ -1,6 +1,6 @@
 package cn.edu.zua.damon.dao;
 
-import cn.edu.zua.damon.entity.Student;
+import cn.edu.zua.damon.entity.domain.StudentDO;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,7 +15,7 @@ public interface StudentDao {
      * 根据id查找
      *
      * @param id Long
-     * @return Student
+     * @return StudentDO
      */
-    Student findStudentById(Long id);
+    StudentDO getStudentById(Long id);
 }

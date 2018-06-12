@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.zua.damon.dao.BookDao">
-    <resultMap type="cn.edu.zua.damon.entity.Book" id="BookResult">
+    <resultMap type="BookDO" id="BookResult">
         <result property="id" column="id"/>
         <result property="isbn" column="isbn"/>
         <result property="frontCover" column="front_cover"/>
@@ -22,7 +22,7 @@
         <result property="hot" column="hot"/>
     </resultMap>
 
-    <select id="findBooks" parameterType="Map" resultMap="BookResult">
+    <select id="listBooks" parameterType="Map" resultMap="BookResult">
         select id,isbn,front_cover,title,subtitle,original_price,market_price,introduction,binding_type,pages,author,publisher,catalog,supply,book_status,hot from book
         <where>
             <if test="author!=null and author!='' ">
@@ -41,7 +41,7 @@
         </if>
     </select>
 
-    <select id="getTotalBooks" parameterType="Map" resultType="Long">
+    <select id="countTotalBooks" parameterType="Map" resultType="Long">
         select count(*) from book
         <where>
             <if test="author!=null and author!='' ">

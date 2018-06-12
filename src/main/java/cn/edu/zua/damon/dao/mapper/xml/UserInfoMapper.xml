@@ -3,14 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.zua.damon.dao.UserInfoDao">
-    <resultMap type="UserInfo" id="UserResult">
+    <resultMap type="UserInfoDO" id="UserResult">
         <result property="id" column="id"/>
         <result property="userName" column="user_name"/>
         <result property="passWord" column="pass_word"/>
         <result property="roleName" column="role_name"/>
     </resultMap>
 
-    <select id="login" parameterType="UserInfo" resultMap="UserResult">
+    <select id="login" parameterType="UserInfoDO" resultMap="UserResult">
         SELECT
             id,
             user_name,
@@ -22,7 +22,7 @@
         LIMIT 1
     </select>
 
-    <select id="findUserInfos" parameterType="Map" resultMap="UserResult">
+    <select id="listUserInfos" parameterType="Map" resultMap="UserResult">
         SELECT id,user_name,pass_word,role_name FROM user_info
         <where>
             <if test="userName!=null and userName!='' ">
@@ -34,7 +34,7 @@
         </if>
     </select>
 
-    <select id="getTotalUserInfo" parameterType="Map" resultType="Long">
+    <select id="countTotalUserInfo" parameterType="Map" resultType="Long">
         SELECT count(*) FROM user_info
         <where>
             <if test="userName!=null and userName!='' ">
@@ -43,7 +43,7 @@
         </where>
     </select>
 
-    <update id="updateUserInfo" parameterType="UserInfo">
+    <update id="updateUserInfo" parameterType="UserInfoDO">
         UPDATE user_info
         <set>
             <if test="userName!=null and userName!='' ">
@@ -56,7 +56,7 @@
         WHERE id=#{id} AND <![CDATA[ id <> 2 ]]>
     </update>
 
-    <insert id="addUserInfo" parameterType="UserInfo">
+    <insert id="insertUserInfo" parameterType="UserInfoDO">
         INSERT INTO user_info (user_name, pass_word)
         VALUES (#{userName}, #{passWord})
     </insert>

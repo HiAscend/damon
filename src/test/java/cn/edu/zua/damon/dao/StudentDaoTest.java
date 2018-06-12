@@ -1,6 +1,6 @@
 package cn.edu.zua.damon.dao;
 
-import cn.edu.zua.damon.entity.Student;
+import cn.edu.zua.damon.entity.domain.StudentDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,9 @@ public class StudentDaoTest extends AbstractTestNGSpringContextTests {
     private static final Logger LOG = LoggerFactory.getLogger(StudentDaoTest.class);
     private StudentDao studentDao;
 
+    public StudentDaoTest() {
+    }
+
     @Autowired
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
@@ -26,7 +29,7 @@ public class StudentDaoTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testFindStudentById() {
-        Student student = studentDao.findStudentById(2L);
+        StudentDO student = studentDao.getStudentById(2L);
         System.out.println("student = " + student);
     }
 }

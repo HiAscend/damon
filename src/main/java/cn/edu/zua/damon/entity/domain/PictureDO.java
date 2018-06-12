@@ -1,4 +1,4 @@
-package cn.edu.zua.damon.entity;
+package cn.edu.zua.damon.entity.domain;
 
 import cn.edu.zua.damon.util.MyReflectionToStringBuilder;
 
@@ -6,12 +6,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Picture
+ * PictureDO
  *
  * @author ascend
  * @date 2018/5/30 11:25.
  */
-public class Picture implements Serializable {
+public class PictureDO implements Serializable {
     private static final long serialVersionUID = 4596583377813876503L;
     /**
      * 主键
@@ -26,7 +26,7 @@ public class Picture implements Serializable {
     /**
      * 图片类型
      */
-    private int type;
+    private int pictureType;
 
     /**
      * 目标地址
@@ -36,7 +36,7 @@ public class Picture implements Serializable {
     /**
      * 图片评分
      */
-    private int grade;
+    private Integer grade;
 
     /**
      * 创建时间
@@ -48,8 +48,8 @@ public class Picture implements Serializable {
      */
     private Date gmtModified;
 
-
-    public Picture() {
+    public PictureDO() {
+        // 默认构造函数
     }
 
     public Long getId() {
@@ -68,12 +68,12 @@ public class Picture implements Serializable {
         this.path = path;
     }
 
-    public int getType() {
-        return type;
+    public int getPictureType() {
+        return pictureType;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setPictureType(int pictureType) {
+        this.pictureType = pictureType;
     }
 
     public String getTargetUrl() {
@@ -84,11 +84,11 @@ public class Picture implements Serializable {
         this.targetUrl = targetUrl;
     }
 
-    public int getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 

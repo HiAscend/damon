@@ -1,16 +1,16 @@
-package cn.edu.zua.damon.entity;
+package cn.edu.zua.damon.entity.domain;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.io.Serializable;
 
 /**
- * UserInfo
+ * UserInfoDO
  *
  * @author ascend
  * @date 2018/5/28 11:03.
  */
-public class UserInfo implements Serializable {
+public class UserInfoDO implements Serializable {
 
     private static final long serialVersionUID = 2740544421155496415L;
     /**
@@ -33,7 +33,8 @@ public class UserInfo implements Serializable {
      */
     private String roleName;
 
-    public UserInfo() {
+    public UserInfoDO() {
+        // 空构造
     }
 
     public Long getId() {

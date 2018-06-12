@@ -1,4 +1,4 @@
-package cn.edu.zua.damon.entity;
+package cn.edu.zua.damon.entity.domain;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
@@ -6,12 +6,12 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 /**
- * Article
+ * ArticleDO
  *
  * @author ascend
  * @date 2018/5/22 17:23.
  */
-public class Article implements Serializable {
+public class ArticleDO implements Serializable {
     private static final long serialVersionUID = 8680804983633158833L;
 
     /**
@@ -39,7 +39,8 @@ public class Article implements Serializable {
      */
     private String addName;
 
-    public Article() {
+    public ArticleDO() {
+        // 空构造
     }
 
     public BigInteger getId() {

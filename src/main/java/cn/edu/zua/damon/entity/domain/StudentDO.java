@@ -1,4 +1,4 @@
-package cn.edu.zua.damon.entity;
+package cn.edu.zua.damon.entity.domain;
 
 import cn.edu.zua.damon.util.MyReflectionToStringBuilder;
 
@@ -9,16 +9,17 @@ import java.time.LocalTime;
 import java.util.Date;
 
 /**
- * Student
+ * StudentDO
  *
  * @author ascend
  * @date 2018/6/11 16:39.
  */
-public class Student implements Serializable {
+public class StudentDO implements Serializable {
 
     private static final long serialVersionUID = 5797977328960228758L;
 
-    public Student() {
+    public StudentDO() {
+        // 空构造
     }
 
     /**

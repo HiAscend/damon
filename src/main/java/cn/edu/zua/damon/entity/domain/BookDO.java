@@ -1,4 +1,4 @@
-package cn.edu.zua.damon.entity;
+package cn.edu.zua.damon.entity.domain;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
@@ -6,11 +6,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Book
+ * BookDO
  *
  * @author ascend
  */
-public class Book implements Serializable {
+public class BookDO implements Serializable {
     private static final long serialVersionUID = 2890919381220722182L;
 
     /**
@@ -78,7 +78,7 @@ public class Book implements Serializable {
      */
     private Integer hot;
 
-    public Book() {
+    public BookDO() {
     }
 
     public Long getId() {
