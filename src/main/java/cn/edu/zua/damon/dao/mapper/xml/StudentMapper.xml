@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.zua.damon.dao.StudentDao">
+    <!--默认结果集-->
     <resultMap type="StudentDO" id="StudentResult">
         <result property="id" column="id"/>
         <result property="userName" column="user_name"/>
@@ -12,6 +13,11 @@
         <result property="date" column="t_date"/>
         <result property="time" column="t_time"/>
         <result property="datetime" column="t_datetime"/>
+    </resultMap>
+
+    <!--带学生地址的结果集-->
+    <resultMap id="StudentDOWithAddress" type="StudentDO">
+
     </resultMap>
 
     <!--根据id查找-->
@@ -43,4 +49,35 @@
         FROM test_student
         WHERE id = #{id}
     </select>
+
+    <!--根据id查找3-->
+    <select id="getStudentById3" parameterType="Long" resultType="StudentDO">
+        SELECT
+        id,
+        user_name AS userName,
+        age,
+        gmt_create AS gmtCreate,
+        gmt_modified AS gmtModified,
+        t_date AS date,
+        t_time AS time,
+        t_datetime AS datetime
+        FROM test_student
+        WHERE id = #{id}
+    </select>
+
+    <!--根据id查找4,附带地址信息-->
+    <select id="getStudentById4" parameterType="Long" resultMap="StudentDO">
+        SELECT
+        id,
+        user_name AS userName,
+        age,
+        gmt_create AS gmtCreate,
+        gmt_modified AS gmtModified,
+        t_date AS date,
+        t_time AS time,
+        t_datetime AS datetime
+        FROM test_student
+        WHERE id = #{id}
+    </select>
+
 </mapper>

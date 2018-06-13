@@ -15,8 +15,7 @@ import java.util.Date;
  * @date 2018/6/11 16:39.
  */
 public class StudentDO implements Serializable {
-
-    private static final long serialVersionUID = 5797977328960228758L;
+    private static final long serialVersionUID = 6798448018631234591L;
 
     public StudentDO() {
         // 空构造
@@ -35,7 +34,7 @@ public class StudentDO implements Serializable {
     /**
      * 年龄
      */
-    private int age;
+    private Integer age;
 
     /**
      * 记录创建时间
@@ -50,17 +49,25 @@ public class StudentDO implements Serializable {
     /**
      * 日期
      */
-    private LocalDate date;
+    private transient LocalDate date;
 
     /**
      * 时间
      */
-    private LocalTime time;
+    private transient LocalTime time;
 
     /**
      * 日期时间
      */
-    private LocalDateTime datetime;
+    private transient LocalDateTime datetime;
+
+    // address
+
+    /**
+     * 学生地址
+     */
+    private AddressDO address;
+
 
     public Long getId() {
         return id;
@@ -78,11 +85,11 @@ public class StudentDO implements Serializable {
         this.userName = userName;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -124,6 +131,14 @@ public class StudentDO implements Serializable {
 
     public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
+    }
+
+    public AddressDO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressDO address) {
+        this.address = address;
     }
 
     @Override

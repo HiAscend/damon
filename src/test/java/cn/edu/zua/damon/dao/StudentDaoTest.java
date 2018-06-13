@@ -30,14 +30,20 @@ public class StudentDaoTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testFindStudentById() {
+    public void testGetStudentById() {
         StudentDO student = studentDao.getStudentById(2L);
         System.out.println("student = " + student);
     }
 
     @Test
-    public void testFindStudentById2() {
+    public void testGetStudentById2() {
         Map<String, Object> map = studentDao.getStudentById2(2L);
         System.out.println("map = " + map);
+    }
+
+    @Test
+    public void testGetStudentById3() {
+        StudentDO student = studentDao.getStudentById3(2L);
+        System.out.println("student = " + student);
     }
 }

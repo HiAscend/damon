@@ -28,4 +28,20 @@ public interface StudentDao {
      * @return StudentDO
      */
     Map<String, Object> getStudentById2(Long id);
+
+    /**
+     * 根据id查找3
+     *
+     * @param id Long
+     * @return StudentDO
+     */
+    StudentDO getStudentById3(Long id);
+
+    /**
+     * 根据id查找4,附带地址信息
+     *
+     * @param id Long
+     * @return StudentDO
+     */
+    StudentDO getStudentById4(Long id);
 }
