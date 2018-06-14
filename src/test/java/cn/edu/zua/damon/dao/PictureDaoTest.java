@@ -84,4 +84,21 @@ public class PictureDaoTest extends AbstractTestNGSpringContextTests {
         System.out.println("result = " + result);
     }
 
+    @Test
+    public void testUpdatePicture() {
+        PictureDO picture = new PictureDO();
+        picture.setId(1L);
+
+        picture.setPath("/tmp/zs.png.update");
+        picture.setPictureType(2);
+        int result = pictureDao.updatePicture(picture);
+        System.out.println("result = " + result);
+    }
+
+    @Test
+    public void testDeletePicture() {
+        int result = pictureDao.deletePicture(4L);
+        System.out.println("result = " + result);
+    }
+
 }

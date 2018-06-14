@@ -83,11 +83,16 @@
     <update id="updatePicture" parameterType="PictureDO">
         UPDATE picture
         <set>
-            <if test="path != null and path != '' ">
-                path = #{path}
-            </if>
+            <if test="path != null and path != ''">path = #{path},</if>
+            <if test="pictureType != null">picture_type = #{pictureType},</if>
+            <if test="targetUrl != null">target_url = #{targetUrl},</if>
+            <if test="grade != null">grade = #{grade}</if>
         </set>
-        WHERE id=#{id}
+        WHERE id = #{id}
     </update>
 
+    <!--删除图片-->
+    <delete id="deletePicture" parameterType="Long">
+        DELETE FROM picture WHERE id = #{id}
+    </delete>
 </mapper>

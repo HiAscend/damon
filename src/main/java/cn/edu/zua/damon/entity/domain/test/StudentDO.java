@@ -1,4 +1,4 @@
-package cn.edu.zua.damon.entity.domain;
+package cn.edu.zua.damon.entity.domain.test;
 
 import cn.edu.zua.damon.util.MyReflectionToStringBuilder;
 
@@ -60,6 +60,11 @@ public class StudentDO implements Serializable {
      * 日期时间
      */
     private transient LocalDateTime datetime;
+
+    /**
+     * 性别
+     */
+    private Integer sex;
 
     // address
 
@@ -131,6 +136,14 @@ public class StudentDO implements Serializable {
 
     public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public AddressDO getAddress() {

@@ -1,4 +1,4 @@
-package cn.edu.zua.damon.entity.domain;
+package cn.edu.zua.damon.entity.domain.test;
 
 import cn.edu.zua.damon.util.MyReflectionToStringBuilder;
 

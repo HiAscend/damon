@@ -15,10 +15,67 @@
         <result property="datetime" column="t_datetime"/>
     </resultMap>
 
+    <!--默认结果集-->
+    <resultMap id="StudentResult2" type="StudentDO">
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="age" column="age"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+        <result property="date" column="t_date"/>
+        <result property="time" column="t_time"/>
+        <result property="datetime" column="t_datetime"/>
+        <discriminator javaType="Integer" column="sex">
+            <case value="1" resultType="MaleStudent">
+                <result property="sexuality" column="sex"/>
+            </case>
+            <case value="2" resultType="FemaleStudent">
+                <result property="gender" column="age"/>
+            </case>
+        </discriminator>
+    </resultMap>
+
     <!--带学生地址的结果集-->
     <resultMap id="StudentDOWithAddress" type="StudentDO">
-
+        <id property="id" column="student_id"/>
+        <result property="userName" column="student_user_name"/>
+        <result property="age" column="student_age"/>
+        <result property="gmtCreate" column="student_gmt_create"/>
+        <result property="gmtModified" column="student_gmt_modified"/>
+        <result property="date" column="student_t_date"/>
+        <result property="time" column="student_t_time"/>
+        <result property="datetime" column="student_t_datetime"/>
+        <result property="sex" column="student_sex"/>
+        <association property="address" javaType="AddressDO">
+            <id property="id" column="address_id"/>
+            <result property="studentId" column="address_student_id"/>
+            <result property="address" column="address_address"/>
+            <result property="gmtCreate" column="address_gmt_create"/>
+            <result property="gmtModified" column="address_gmt_modified"/>
+        </association>
     </resultMap>
+
+    <!--带学生地址的结果集2-->
+    <resultMap id="StudentDOWithAddress2" type="StudentDO">
+        <id property="id" column="student_id"/>
+        <result property="userName" column="student_user_name"/>
+        <result property="age" column="student_age"/>
+        <result property="gmtCreate" column="student_gmt_create"/>
+        <result property="gmtModified" column="student_gmt_modified"/>
+        <result property="date" column="student_t_date"/>
+        <result property="time" column="student_t_time"/>
+        <result property="datetime" column="student_t_datetime"/>
+        <result property="sex" column="student_sex"/>
+        <association property="address" javaType="AddressDO" resultMap="Address" columnPrefix="address_"/>
+    </resultMap>
+    <resultMap id="Address" type="AddressDO">
+        <id property="id" column="id"/>
+        <result property="studentId" column="student_id"/>
+        <result property="address" column="address"/>
+        <result property="gmtCreate" column="gmt_create"/>
+        <result property="gmtModified" column="gmt_modified"/>
+    </resultMap>
+
 
     <!--根据id查找-->
     <select id="getStudentById" parameterType="Long" resultMap="StudentResult">
@@ -38,14 +95,14 @@
     <!--根据id查找2-->
     <select id="getStudentById2" parameterType="Long" resultType="map">
         SELECT
-        id,
-        user_name,
-        age,
-        gmt_create,
-        gmt_modified,
-        t_date,
-        t_time,
-        t_datetime
+            id,
+            user_name,
+            age,
+            gmt_create,
+            gmt_modified,
+            t_date,
+            t_time,
+            t_datetime
         FROM test_student
         WHERE id = #{id}
     </select>
@@ -53,31 +110,134 @@
     <!--根据id查找3-->
     <select id="getStudentById3" parameterType="Long" resultType="StudentDO">
         SELECT
-        id,
-        user_name AS userName,
-        age,
-        gmt_create AS gmtCreate,
-        gmt_modified AS gmtModified,
-        t_date AS date,
-        t_time AS time,
-        t_datetime AS datetime
+            id,
+            user_name    AS userName,
+            age,
+            gmt_create   AS gmtCreate,
+            gmt_modified AS gmtModified,
+            t_date       AS date,
+            t_time       AS time,
+            t_datetime   AS datetime
         FROM test_student
         WHERE id = #{id}
     </select>
 
     <!--根据id查找4,附带地址信息-->
-    <select id="getStudentById4" parameterType="Long" resultMap="StudentDO">
+    <select id="getStudentById4" parameterType="Long" resultMap="StudentDOWithAddress">
         SELECT
-        id,
-        user_name AS userName,
-        age,
-        gmt_create AS gmtCreate,
-        gmt_modified AS gmtModified,
-        t_date AS date,
-        t_time AS time,
-        t_datetime AS datetime
+            A.id           AS student_id,
+            A.user_name    AS student_user_name,
+            A.age          AS student_age,
+            A.gmt_create   AS student_gmt_create,
+            A.gmt_modified AS student_gmt_modified,
+            A.t_date       AS student_t_date,
+            A.t_time       AS student_t_time,
+            A.t_datetime   AS student_t_datetime,
+            A.sex          AS student_sex,
+            B.id           AS address_id,
+            B.student_id   AS address_student_id,
+            B.address      AS address_address,
+            B.gmt_create   AS address_gmt_create,
+            B.gmt_modified AS address_gmt_modified
+        FROM test_student A
+            LEFT JOIN test_address B
+                ON A.id = B.student_id
+        WHERE A.id = #{id}
+    </select>
+
+    <!--根据id查找5,附带地址信息-->
+    <select id="getStudentById5" parameterType="Long" resultMap="StudentDOWithAddress2">
+        SELECT
+            A.id           AS student_id,
+            A.user_name    AS student_user_name,
+            A.age          AS student_age,
+            A.gmt_create   AS student_gmt_create,
+            A.gmt_modified AS student_gmt_modified,
+            A.t_date       AS student_t_date,
+            A.t_time       AS student_t_time,
+            A.t_datetime   AS student_t_datetime,
+            A.sex          AS student_sex,
+            B.id           AS address_id,
+            B.student_id   AS address_student_id,
+            B.address      AS address_address,
+            B.gmt_create   AS address_gmt_create,
+            B.gmt_modified AS address_gmt_modified
+        FROM test_student A
+            LEFT JOIN test_address B
+                ON A.id = B.student_id
+        WHERE A.id = #{id}
+    </select>
+
+    <!--根据id查找6-->
+    <select id="getStudentById6" parameterType="Long" resultMap="StudentResult2">
+        SELECT
+            id,
+            user_name,
+            age,
+            gmt_create,
+            gmt_modified,
+            t_date,
+            t_time,
+            t_datetime,
+            sex
         FROM test_student
         WHERE id = #{id}
     </select>
 
+    <!--根据id查找7, List-->
+    <select id="getStudentById7" parameterType="List" resultMap="StudentResult">
+        SELECT
+        id,
+        user_name,
+        age,
+        gmt_create,
+        gmt_modified,
+        t_date,
+        t_time,
+        t_datetime,
+        sex
+        FROM test_student
+        WHERE id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--根据id查找8, Set-->
+    <select id="getStudentById8" parameterType="java.util.Set" resultMap="StudentResult">
+        SELECT
+        id,
+        user_name,
+        age,
+        gmt_create,
+        gmt_modified,
+        t_date,
+        t_time,
+        t_datetime,
+        sex
+        FROM test_student
+        WHERE id IN
+        <foreach collection="collection" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <!--根据id查找9, Map-->
+    <select id="getStudentById9" parameterType="java.util.Map" resultMap="StudentResult">
+        SELECT
+        id,
+        user_name,
+        age,
+        gmt_create,
+        gmt_modified,
+        t_date,
+        t_time,
+        t_datetime,
+        sex
+        FROM test_student
+        WHERE id IN
+        <foreach collection="myMap" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

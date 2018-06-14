@@ -26,7 +26,7 @@ public class PictureDO implements Serializable {
     /**
      * 图片类型
      */
-    private int pictureType;
+    private Integer pictureType;
 
     /**
      * 目标地址
@@ -68,11 +68,11 @@ public class PictureDO implements Serializable {
         this.path = path;
     }
 
-    public int getPictureType() {
+    public Integer getPictureType() {
         return pictureType;
     }
 
-    public void setPictureType(int pictureType) {
+    public void setPictureType(Integer pictureType) {
         this.pictureType = pictureType;
     }
 
