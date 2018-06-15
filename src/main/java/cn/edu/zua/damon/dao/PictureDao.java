@@ -23,6 +23,14 @@ public interface PictureDao {
     PictureDO getPictureById(Long id);
 
     /**
+     * 根据id查找，世界杯
+     *
+     * @param id Long
+     * @return 查询的对象
+     */
+    PictureDO getWorldCupPictureById(Long id);
+
+    /**
      * 条件查询相应的数据集合,limit
      * key:
      * targetUrl        like查询
@@ -74,6 +82,5 @@ public interface PictureDao {
      * @return 受影响的行数
      */
     int deletePicture(Long id);
-
 
 }

@@ -33,8 +33,14 @@ public class PictureDaoTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testFindPictureById() {
+    public void testGetPictureById() {
         PictureDO p1 = pictureDao.getPictureById(1L);
+        LOG.debug("picture:{}", p1);
+    }
+
+    @Test
+    public void testGetWorldCupPictureById() {
+        PictureDO p1 = pictureDao.getWorldCupPictureById(1L);
         LOG.debug("picture:{}", p1);
     }
 
@@ -100,5 +106,7 @@ public class PictureDaoTest extends AbstractTestNGSpringContextTests {
         int result = pictureDao.deletePicture(4L);
         System.out.println("result = " + result);
     }
+
+
 
 }

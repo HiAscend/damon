@@ -53,7 +53,7 @@
             3、publishEvents:boolean 默认为true，表示当DispatcherServlet处理完一个请求后，是否需要想容器发布一个ServletRequestHandledEvent事件
                 若容器中没有任何事件监听器，则可以将该属性设置为false，以便提高运行性能-->
 
-        <servlet-name>chapter17</servlet-name>
+        <servlet-name>damon</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!--默认加载的文件是，chapter17-servlet.xml-->
         <init-param>
@@ -76,7 +76,7 @@
     </servlet-mapping>-->
     <!--下面的配置需要对静态资源进行处理,使用rest风格编程-->
     <servlet-mapping>
-        <servlet-name>chapter17</servlet-name>
+        <servlet-name>damon</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!--11.session-config?-->
