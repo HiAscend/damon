@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--需要修改的在最下面-->
+<!--需要修改的在最下面-->
+<!--需要修改的在最下面-->
+<!--需要修改的在最下面-->
+<!--文件名是不能随意更改的，若更改需要另外配置文件名 http://blog.csdn.net/pk490525/article/details/16819307-->
+<generatorConfiguration>
+    <!-- 可以用于加载配置项或者配置文件，在整个配置文件中就可以使用${propertyKey}的方式来引用配置项
+        resource：配置资源加载地址，使用resource，MBG从classpath开始找，比如com/myproject/generatorConfig.properties
+        url：配置资源加载地质，使用URL的方式，比如file:///C:/myfolder/generatorConfig.properties.
+        注意，两个属性只能选址一个;
+        另外，如果使用了mybatis-generator-maven-plugin，那么在pom.xml中定义的properties都可以直接在generatorConfig.xml中使用
+        <properties resource="" url="" />
+    -->
+    <!-- 在MBG工作的时候，需要额外加载的依赖包
+        location属性指明加载jar/zip包的全路径
+        <classPathEntry location="/ProgramFiles/IBM/SQLLIB/java/db2java.zip" />
+     -->
+
+    <!-- 数据库驱动包位置  当使用maven插件构建的时候，设置依赖jar,则不需要这行代码-->
+    <!--<classPathEntry location="E:\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />-->
+
+    <!--
+        context:生成一组对象的环境
+        id:必选，上下文id，用于在生成错误时提示
+        defaultModelType:指定生成对象的样式
+            1，conditional：类似hierarchical；
+            2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+            3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
+        targetRuntime:
+            1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+            2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+        introspectedColumnImpl：类全限定名，用于扩展MBG
+    -->
+
+    <!--context" 的内容必须匹配 "(property*,plugin*,commentGenerator?,(connectionFactory|jdbcConnection),javaTypeResolver?,javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table+)-->
+    <!--MyBatis3,MyBatis3Simple-->
+    <context id="testContext" targetRuntime="MyBatis3">
+        <!--plugin-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--<plugin type="cn.edu.zua.damon.util.MyDefaultCommentGenerator"/>-->
+        <!--<plugin type="cn.edu.zua.mybatis.MyDefaultCommentGenerator"/>-->
+        <!--commentGenerator-->
+        <commentGenerator type="cn.edu.zua.mybatis.MyDefaultCommentGenerator">
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+            <!--自定义属性-->
+            <property name="author" value="ascend"/>
+        </commentGenerator>
+        <!--数据库链接URL、用户名、密码-->
+        <jdbcConnection driverClass="${mybatis.generator.jdbcDriver}" connectionURL="${mybatis.generator.jdbcURL}"
+                        userId="${mybatis.generator.jdbcUserId}" password="${mybatis.generator.jdbcPassword}"/>
+
+
+        <!--javaTypeResolver-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/><!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+        </javaTypeResolver>
+        <!--备用：D:/tool/myOwnWorkspace/gitkuki/MicroMessage/src/main/java-->
+        <!--备用：D:/work/gitkuki/MicroMessage/src/main/java-->
+        <!--生成实体类的包名和位置和目标项目-->
+        <javaModelGenerator targetPackage="${model.package}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成的SQL映射文件包名和位置和目标项目,只有当javaClientGenerator指定为xml的时候此节点才是必须的-->
+        <sqlMapGenerator targetPackage="${dao.package}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--指定目标包和目标项目生成的客户端接口和类 ANNOTATEDMAPPER MIXEDMAPPER XMLMAPPER-->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="${mapper.package}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--需要修改的地方-->
+        <!--需要修改的地方-->
+        <!--需要修改的地方-->
+        <!--需要修改的地方-->
+
+        <!--要生成那些表(更改tableName和domainObjectName就可以)-->
+        <!--最简单的使用方式，将表名users==>user-->
+        <!--<table tableName="users" domainObjectName="User" />-->
+        <!--modelType：hierarchical  conditional flat-->
+        <!--<table tableName="user_admin" domainObjectName="UserAdmin" modelType="flat"
+               enableSelectByExample="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableCountByExample="true"
+        >
+            &lt;!&ndash;<ignoreColumn column="name"/>&ndash;&gt;
+            &lt;!&ndash;配置列名与属性名的对应&ndash;&gt;
+            &lt;!&ndash;<columnOverride column="name" property="t_name"/>&ndash;&gt;
+            &lt;!&ndash;<ignoreColumn column="name2"/>&ndash;&gt;
+            &lt;!&ndash;<ignoreColumn column="name3"/>&ndash;&gt;
+        </table>-->
+
+        <!--测试-->
+        <table tableName="test_student" domainObjectName="StudentDO" modelType="flat">
+            <ignoreColumnsByRegex pattern="(?i)gmt.*"/>       <!--(?i) 表示忽略大小写-->
+            <columnOverride column="t_date" property="date"/>
+            <columnOverride column="t_time" property="time"/>
+            <columnOverride column="t_datetime" property="datetime"/>
+        </table>
+    </context>
+
+    <!--MyBatis3,MyBatis3Simple-->
+    <context id="officialContext" targetRuntime="MyBatis3">
+        <!--plugin-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!--commentGenerator-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        </commentGenerator>
+        <!--数据库链接URL、用户名、密码-->
+        <jdbcConnection driverClass="${mybatis.generator.jdbcDriver}" connectionURL="${mybatis.generator.jdbcURL}"
+                        userId="${mybatis.generator.jdbcUserId}" password="${mybatis.generator.jdbcPassword}"/>
+
+
+        <!--javaTypeResolver-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/><!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+        </javaTypeResolver>
+        <!--备用：D:/tool/myOwnWorkspace/gitkuki/MicroMessage/src/main/java-->
+        <!--备用：D:/work/gitkuki/MicroMessage/src/main/java-->
+        <!--生成实体类的包名和位置和目标项目-->
+        <javaModelGenerator targetPackage="${model.package}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成的SQL映射文件包名和位置和目标项目,只有当javaClientGenerator指定为xml的时候此节点才是必须的-->
+        <sqlMapGenerator targetPackage="${dao.package}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--指定目标包和目标项目生成的客户端接口和类 ANNOTATEDMAPPER MIXEDMAPPER XMLMAPPER-->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="${mapper.package}" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--需要修改的地方-->
+        <!--需要修改的地方-->
+        <!--需要修改的地方-->
+        <!--需要修改的地方-->
+
+        <!--要生成那些表(更改tableName和domainObjectName就可以)-->
+        <!--最简单的使用方式，将表名users==>user-->
+        <!--<table tableName="users" domainObjectName="User" />-->
+        <!--modelType：hierarchical  conditional flat-->
+        <!--<table tableName="user_admin" domainObjectName="UserAdmin" modelType="flat"
+               enableSelectByExample="true"
+               enableDeleteByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableCountByExample="true"
+        >
+            &lt;!&ndash;<ignoreColumn column="name"/>&ndash;&gt;
+            &lt;!&ndash;配置列名与属性名的对应&ndash;&gt;
+            &lt;!&ndash;<columnOverride column="name" property="t_name"/>&ndash;&gt;
+            &lt;!&ndash;<ignoreColumn column="name2"/>&ndash;&gt;
+            &lt;!&ndash;<ignoreColumn column="name3"/>&ndash;&gt;
+        </table>-->
+        <!--<table tableName="userinfo" domainObjectName="UserinfoPO" modelType="flat">
+            <ignoreColumnsByRegex pattern="(?i)gmt.*"/>&lt;!&ndash;(?i) 表示忽略大小写&ndash;&gt;
+        </table>-->
+        <table tableName="student" domainObjectName="StudentPO" modelType="flat">
+            <ignoreColumnsByRegex pattern="(?i)gmt.*"/><!--(?i) 表示忽略大小写-->
+            <columnOverride column="is_graduated" property="graduated"/>
+        </table>
+    </context>
+</generatorConfiguration>
