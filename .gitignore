@@ -166,3 +166,4 @@ buildNumber.properties
 
 /.idea/
 /damon.iml
+/src/main/generated-sources/
