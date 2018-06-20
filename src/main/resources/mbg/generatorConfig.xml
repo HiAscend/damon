@@ -41,8 +41,6 @@
     <context id="testContext" targetRuntime="MyBatis3">
         <!--plugin-->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
-        <!--<plugin type="cn.edu.zua.damon.util.MyDefaultCommentGenerator"/>-->
-        <!--<plugin type="cn.edu.zua.mybatis.MyDefaultCommentGenerator"/>-->
         <!--commentGenerator-->
         <commentGenerator type="cn.edu.zua.mybatis.MyDefaultCommentGenerator">
             <property name="suppressAllComments" value="false"/>

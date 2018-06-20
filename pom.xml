@@ -13,15 +13,15 @@
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
-    <repositories>
-        <repository>
-            <id>in-project-repo</id>
-            <releases>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-            <url>file://${project.basedir}/repo</url>
-        </repository>
-    </repositories>
+<repositories>
+    <repository>
+        <id>in-project-repo</id>
+        <releases>
+            <checksumPolicy>ignore</checksumPolicy>
+        </releases>
+        <url>file://${project.basedir}/repo</url>
+    </repository>
+</repositories>
 
     <!--版本的配置都应通过兼容性考虑，最高的不一定是最好的，尽量使用最简配置，利用依赖自动下载-->
     <properties>
