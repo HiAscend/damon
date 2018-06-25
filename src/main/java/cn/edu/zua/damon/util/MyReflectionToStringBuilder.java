@@ -11,6 +11,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 public class MyReflectionToStringBuilder {
 
     public MyReflectionToStringBuilder() {
+        // 空构造
     }
 
     /**
