@@ -32,29 +32,30 @@
 
         <!--所有版本必须在此处配置(插件除外)，否则后期难以维护，dependencies标签依次配置-->
         <!--core-->
-        <core.spring.version>4.3.14.RELEASE</core.spring.version>
-        <core.aspectjweaver.version>1.8.9</core.aspectjweaver.version>
-        <core.mybatis-spring.version>1.3.2</core.mybatis-spring.version>
-        <core.spring-batch-infrastructure.version>3.0.9.RELEASE</core.spring-batch-infrastructure.version>
-        <core.jackson.version>2.8.11.1</core.jackson.version>
-        <servlet.version>3.1.0</servlet.version>
-        <servlet.jsp-api.version>2.3.1</servlet.jsp-api.version>
-        <servlet.jstl.version>1.2</servlet.jstl.version>
-        <servlet.el-api.version>3.0.0</servlet.el-api.version>
+        <core.spring>4.3.14.RELEASE</core.spring>
+        <core.aspectjweaver>1.8.9</core.aspectjweaver>
+        <core.mybatis-spring>1.3.2</core.mybatis-spring>
+        <core.spring-batch-infrastructure>3.0.9.RELEASE</core.spring-batch-infrastructure>
+        <core.jackson>2.8.11.1</core.jackson>
+        <servlet>3.1.0</servlet>
+        <servlet.jsp-api>2.3.1</servlet.jsp-api>
+        <servlet.jstl>1.2</servlet.jstl>
+        <servlet.el-api>3.0.0</servlet.el-api>
         <!--db-->
-        <db.mybatis.version>3.4.6</db.mybatis.version>
-        <db.commons-dbcp2.version>2.1.1</db.commons-dbcp2.version>
-        <db.mysql-connector-java.version>5.1.46</db.mysql-connector-java.version>
+        <db.mybatis>3.4.6</db.mybatis>
+        <db.commons-dbcp2>2.1.1</db.commons-dbcp2>
+        <db.mysql-connector-java>5.1.46</db.mysql-connector-java>
         <!--log-->
-        <log.slf4j.version>1.7.24</log.slf4j.version>
-        <log.log4j2.version>2.8.2</log.log4j2.version>
+        <log.slf4j>1.7.24</log.slf4j>
+        <log.log4j2>2.8.2</log.log4j2>
         <!--util-->
-        <utils.commons-lang3.version>3.5</utils.commons-lang3.version>
-        <utils.commons-beanutils.version>1.9.3</utils.commons-beanutils.version>
-        <utils.commons-io.version>2.6</utils.commons-io.version>
-        <utils.mybatis-generator.version>1.3.6</utils.mybatis-generator.version>
+        <utils.commons-lang3>3.5</utils.commons-lang3>
+        <utils.commons-beanutils>1.9.3</utils.commons-beanutils>
+        <utils.commons-io>2.6</utils.commons-io>
+        <utils.mybatis-generator>1.3.6</utils.mybatis-generator>
         <!--test-->
-        <test.testng.version>6.13.1</test.testng.version>
+        <test.testng>6.13.1</test.testng>
+        <test.mockito-core>2.7.22</test.mockito-core>
 
 
         <!--Mybatis Generator star-->
@@ -92,35 +93,35 @@
             <!--dependency spring-web spring-context spring-aop spring-expression spring-beans spring-core commons-logging-->
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${core.spring.version}</version>
+            <version>${core.spring}</version>
         </dependency>
         <dependency>
             <!--dependency spring-context spring-aop spring-expression spring-beans spring-core -->
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${core.spring.version}</version>
+            <version>${core.spring}</version>
         </dependency>
         <dependency>
             <!--dependency spring-jdbc spring-tx spring-beans spring-core-->
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${core.spring.version}</version>
+            <version>${core.spring}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>${core.aspectjweaver.version}</version>
+            <version>${core.aspectjweaver}</version>
         </dependency>
         <dependency>
             <!--dependency mybatis(3.4.6) spring-context(4.3.14) spring-jdbc(4.3.14) spring-batch-infrastructure(3.0.9) -->
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>${core.mybatis-spring.version}</version>
+            <version>${core.mybatis-spring}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-infrastructure</artifactId>
-            <version>${core.spring-batch-infrastructure.version}</version>
+            <version>${core.spring-batch-infrastructure}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>spring-context</artifactId>
@@ -131,94 +132,94 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${core.jackson.version}</version>
+            <version>${core.jackson}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>${servlet}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>${servlet.jsp-api.version}</version>
+            <version>${servlet.jsp-api}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${servlet.jstl.version}</version>
+            <version>${servlet.jstl}</version>
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
-            <version>${servlet.el-api.version}</version>
+            <version>${servlet.el-api}</version>
         </dependency>
         <!--core 结束-->
         <!--db 开始-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>${db.mybatis.version}</version>
+            <version>${db.mybatis}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>${db.commons-dbcp2.version}</version>
+            <version>${db.commons-dbcp2}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${db.mysql-connector-java.version}</version>
+            <version>${db.mysql-connector-java}</version>
         </dependency>
         <!--db 结束-->
         <!--log 开始-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${log.slf4j.version}</version>
+            <version>${log.slf4j}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>${log.log4j2.version}</version>
+            <version>${log.log4j2}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log.log4j2.version}</version>
+            <version>${log.log4j2}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log.log4j2.version}</version>
+            <version>${log.log4j2}</version>
         </dependency>
         <!--上面四个表示slf4j与log4j2集成-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${log.slf4j.version}</version>
+            <version>${log.slf4j}</version>
         </dependency>
         <!--log 结束-->
         <!--util 开始-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${utils.commons-lang3.version}</version>
+            <version>${utils.commons-lang3}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>${utils.commons-beanutils.version}</version>
+            <version>${utils.commons-beanutils}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${utils.commons-io.version}</version>
+            <version>${utils.commons-io}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>${utils.mybatis-generator.version}</version>
+            <version>${utils.mybatis-generator}</version>
         </dependency>
         <dependency>
             <groupId>cn.edu.zua.mybatis</groupId>
@@ -230,13 +231,19 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${test.testng.version}</version>
+            <version>${test.testng}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${core.spring.version}</version>
+            <version>${core.spring}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${test.mockito-core}</version>
             <scope>test</scope>
         </dependency>
         <!--test 结束-->
