@@ -209,227 +209,238 @@
         </dependency>
 
 
-
         <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>${utils.commons-lang3}</version>
-    </dependency>
-    <dependency>
-        <groupId>commons-beanutils</groupId>
-        <artifactId>commons-beanutils</artifactId>
-        <version>${utils.commons-beanutils}</version>
-    </dependency>
-    <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>${utils.commons-io}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-core</artifactId>
-        <version>${utils.mybatis-generator}</version>
-    </dependency>
-    <dependency>
-        <groupId>cn.edu.zua.mybatis</groupId>
-        <artifactId>mybatis-util</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <!--util 结束-->
-    <!--test 开始-->
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>${test.testng}</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-test</artifactId>
-        <version>${core.spring}</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-core</artifactId>
-        <version>${test.mockito-core}</version>
-        <scope>test</scope>
-    </dependency>
-    <!--test 结束-->
-</dependencies>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${utils.commons-lang3}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${utils.commons-beanutils}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${utils.commons-io}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>${utils.mybatis-generator}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.edu.zua.mybatis</groupId>
+            <artifactId>mybatis-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--util 结束-->
+        <!--test 开始-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${test.testng}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${core.spring}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${test.mockito-core}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--test 结束-->
+    </dependencies>
 
-<build>
-<finalName>damon</finalName>
-<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-<resources>
-    <resource>
-        <directory>${basedir}/src/main/resources</directory>
-    </resource>
-    <resource>
-        <directory>${basedir}/src/main/java</directory>
-        <includes>
-            <include>**/*.xml</include>
-        </includes>
-    </resource>
-</resources>
-<testResources>
-    <testResource>
-        <directory>${basedir}/src/test/resources</directory>
-    </testResource>
-</testResources>
-<!--plugin-->
-<pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-    <plugins>
-        <plugin>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
-        </plugin>
-        <!--构建助手-->
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>build-helper-maven-plugin</artifactId>
-            <version>3.0.0</version>
-        </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-resources-plugin</artifactId>
-            <version>3.0.2</version>
-            <configuration>
-                <encoding>UTF-8</encoding>
-                <resources>
-                    <resource>
-                        <directory>${basedir}/src/main/resources</directory>
-                    </resource>
-                    <!--mybatis的xml文件-->
-                    <resource>
-                        <directory>${basedir}/src/main/java</directory>
-                        <includes>
-                            <include>**/*.xml</include>
-                        </includes>
-                    </resource>
-                </resources>
-                <filters>
-                    <filter></filter>
-                </filters>
-            </configuration>
-        </plugin>
-        <plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.7.0</version>
-            <configuration>
-                <encoding>UTF-8</encoding>
-                <compilerVersion>1.8</compilerVersion>
-            </configuration>
-        </plugin>
-        <plugin>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.20.1</version>
-        </plugin>
-        <plugin>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.2.0</version>
-        </plugin>
-        <plugin>
-            <artifactId>maven-install-plugin</artifactId>
-            <version>2.5.2</version>
-            <configuration>
+    <build>
+        <finalName>damon</finalName>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <!--plugin-->
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!--构建助手-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/src/main/resources</directory>
+                            </resource>
+                            <!--mybatis的xml文件-->
+                            <resource>
+                                <directory>${basedir}/src/main/java</directory>
+                                <includes>
+                                    <include>**/*.xml</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                        <filters>
+                            <filter></filter>
+                        </filters>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <compilerVersion>1.8</compilerVersion>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.20.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                    <configuration>
 
-            </configuration>
-        </plugin>
-        <plugin>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <version>2.8.2</version>
-        </plugin>
-    </plugins>
-</pluginManagement>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
-<plugins>
-    <plugin>
-        <artifactId>maven-clean-plugin</artifactId>
-    </plugin>
-    <!--构建助手-->
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-            <!-- 添加主资源文件目录 -->
-            <execution>
-                <!--自定义名称,不可重复-->
-                <id>add-source</id>
-                <!--指定绑定到生命周期-->
-                <phase>generate-sources</phase>
-                <!--指定指定的目标,可添加多个-->
-                <goals>
-                    <goal>add-source</goal>
-                </goals>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+            </plugin>
+            <!--构建助手-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <!-- 添加主资源文件目录 -->
+                    <execution>
+                        <!--自定义名称,不可重复-->
+                        <id>add-source</id>
+                        <!--指定绑定到生命周期-->
+                        <phase>generate-sources</phase>
+                        <!--指定指定的目标,可添加多个-->
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/src/main/generated-sources</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <sources>
-                        <source>${basedir}/src/main/generated-sources</source>
-                    </sources>
+                    <!--不执行测试用例，也不编译测试代码-->
+                    <skip>true</skip>
                 </configuration>
-            </execution>
-        </executions>
-    </plugin>
-    <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-    <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-    </plugin>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!--跳过测试单元测试，但是会继续编译 https://blog.csdn.net/arkblue/article/details/50974957-->
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <!--mybatis generator plugin-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version><!--版本太低的话会报java.lang.ClassNotFoundException: ANNOTATEDMAPPER 之类的错误-->
+                <executions>
+                    <!--禁止执行-->
+                    <!--<execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>-->
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.46</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>cn.edu.zua.mybatis</groupId>
+                        <artifactId>mybatis-util</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configurationFile>${basedir}/src/main/resources/mbg/generatorConfig.xml</configurationFile>
+                    <jdbcDriver>${mybatis.generator.jdbcDriver}</jdbcDriver>
+                    <jdbcURL>${mybatis.generator.jdbcURL}</jdbcURL>
+                    <jdbcUserId>${mybatis.generator.jdbcUserId}</jdbcUserId>
+                    <jdbcPassword>${mybatis.generator.jdbcPassword}</jdbcPassword>
+                    <outputDirectory>${mybatis.generator.outputDirectory}</outputDirectory>
+                    <overwrite>${mybatis.generator.overwrite}</overwrite>
+                    <verbose>true</verbose><!--If true, then MBG will write progress messages to the build log.-->
+                    <tableNames>${mybatis.generator.tableNames}</tableNames>
+                    <!--<skip>true</skip>-->
+                </configuration>
+            </plugin>
 
-    <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-            <!--不执行测试用例，也不编译测试代码-->
-            <skip>true</skip>
-        </configuration>
-    </plugin>
-    <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-            <!--跳过测试单元测试，但是会继续编译 https://blog.csdn.net/arkblue/article/details/50974957-->
-            <skip>true</skip>
-        </configuration>
-    </plugin>
-    <!--mybatis generator plugin-->
-    <plugin>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-maven-plugin</artifactId>
-        <version>1.3.6</version><!--版本太低的话会报java.lang.ClassNotFoundException: ANNOTATEDMAPPER 之类的错误-->
-        <executions>
-            <!--禁止执行-->
-            <!--<execution>
-                <id>Generate MyBatis Artifacts</id>
-                <goals>
-                    <goal>generate</goal>
-                </goals>
-            </execution>-->
-        </executions>
-        <dependencies>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.46</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.edu.zua.mybatis</groupId>
-                <artifactId>mybatis-util</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-        </dependencies>
-        <configuration>
-            <configurationFile>${basedir}/src/main/resources/mbg/generatorConfig.xml</configurationFile>
-            <jdbcDriver>${mybatis.generator.jdbcDriver}</jdbcDriver>
-            <jdbcURL>${mybatis.generator.jdbcURL}</jdbcURL>
-            <jdbcUserId>${mybatis.generator.jdbcUserId}</jdbcUserId>
-            <jdbcPassword>${mybatis.generator.jdbcPassword}</jdbcPassword>
-            <outputDirectory>${mybatis.generator.outputDirectory}</outputDirectory>
-            <overwrite>${mybatis.generator.overwrite}</overwrite>
-            <verbose>true</verbose><!--If true, then MBG will write progress messages to the build log.-->
-            <tableNames>${mybatis.generator.tableNames}</tableNames>
-            <!--<skip>true</skip>-->
-        </configuration>
-    </plugin>
-</plugins>
-</build>
-        </project>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://192.168.0.30:8081/manager/text</url>
+                    <server>TomcatServer</server>
+                    <path>/damon</path>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
